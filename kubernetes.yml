@@ -13,3 +13,8 @@ Example: When you run a command like kubectl get pods, kubectl sends an HTTP req
 2. etcd:
 It stores all configuration data, secrets, cluster metadata, and the current state of all objects (like Pods, Deployments, Services, etc.).
 When a change occurs (such as creating a new pod), the new state is stored in etcd, and other components of the control plane read from etcd to make decisions about the cluster’s state.
+
+Example:
+When you create a new pod, the kube-apiserver records the pod information in etcd. The scheduler and other control components then use the information stored in etcd to make decisions on where to place the pod or how to adjust the state of the system.
+
+3. kube-scheduler:
