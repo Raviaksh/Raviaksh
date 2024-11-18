@@ -1,0 +1,15 @@
+The Kubernetes control plane is a set of components that manage the state of a Kubernetes cluster. 
+It is responsible for managing the cluster, handling tasks like scheduling, monitoring, scaling, and responding to changes in the cluster. 
+The control plane is typically run on dedicated machines (either physical or virtual), and its components make decisions about the overall state of the cluster.
+
+#######################
+1. kube-apiserver (API Server):
+The API server is the central management point of the Kubernetes control plane. It exposes the Kubernetes API, which is the entry point for all interactions with the cluster.
+All the other control plane components interact with the API server to read and write cluster data.
+
+Example: When you run a command like kubectl get pods, kubectl sends an HTTP request to the kube-apiserver, which retrieves the pod information from etcd and returns it to kubectl.
+        When a developer pushes a deployment file (YAML) with kubectl apply -f deployment.yaml, the API server processes this request and stores the updated state in the cluster's data store.
+
+2. etcd:
+It stores all configuration data, secrets, cluster metadata, and the current state of all objects (like Pods, Deployments, Services, etc.).
+When a change occurs (such as creating a new pod), the new state is stored in etcd, and other components of the control plane read from etcd to make decisions about the cluster’s state.
